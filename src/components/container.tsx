@@ -16,16 +16,16 @@ interface ContainerProps {
 export const Container = (props: ContainerProps) => {
     const width = useWindowDimensions().width;
     const height = useWindowDimensions().height;
-    const link = (route: string) => "/" + `${route.replace(" ", "").toString().trim().toLowerCase()}`
+    const link = (route: string) => "/" + `${route.replace(" ", "").toString().trim().toLowerCase()}`;
 
     return (
         <div style={{display: 'flex', flexDirection: 'column', width: width, height: height}}>
-            <div style={{display: 'flex', justifyContent: 'space-between', backgroundColor: 'black', width: width - 40, height: 60, padding: 20}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', backgroundColor: 'black', width: width - 40, height: 60, padding: 20, boxShadow: "1px 5px 5px #9E9E9E"}}>
                 <img src={logo} alt={'logo'} />
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width: width}}>
                     {props.routes?.map((route) => {
                         return(
-                            <NavLink key={route} style={{textDecoration: "none", listStyle: 'none', color: "white", fontSize: 24}} to={link(route)}>
+                            <NavLink key={route} style={{textDecoration: "none", listStyle: 'none', color: "white", fontSize: 20}} to={link(route)}>
                                 <li>{route}</li>
                             </NavLink>
                         )
