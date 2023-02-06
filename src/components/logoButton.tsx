@@ -5,8 +5,8 @@ interface LogoButtonProps {
 
 export const LogoButton = (props: LogoButtonProps) => {
     return (
-        <div onClick={props.onClick} style={{height: 60, cursor: 'pointer', width: 60, borderRadius: 15, backgroundColor: 'white', marginBottom: 20}}>
-            <img alt={props.icon} src={props.icon} height={28} width={32} style={{paddingTop: 15}} />
+        <div onClick={props.onClick} style={{height: 40, cursor: 'pointer', width: 40, borderRadius: 5, backgroundColor: 'white', marginBottom: 20}}>
+            <img alt={props.icon} src={props.icon} height={20} width={24} style={{paddingTop: 10}} />
         </div>
     )
 }

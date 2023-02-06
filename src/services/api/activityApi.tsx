@@ -14,15 +14,24 @@ interface Activity {
     }
 }
 
-export const GetUserActivityById = (userId: number) => {
+export const UserActivityById = (userId: number) => {
     const [activity, setActivity] = React.useState<Activity>();
-    const url = `http://localhost:3000/user/${userId}/activity`
 
-    axios.get(`${url}${userId}`)
-        .then((response) => {
-            const data = response.data;
-            setActivity(data);
-        })
-        .catch(error => console.error(error));
-        return activity?.data;
+    React.useEffect(() => {
+        GetUserActivityById(userId);
+    }, [])
+
+    const GetUserActivityById = (userId: number) => {
+        const url = `http://localhost:3000/user/${userId}/activity`
+    
+        axios.get(`${url}`)
+            .then((response) => {
+                const data = response.data;
+                setActivity(data);
+                console.log('Activity', data);
+            })
+            .catch(error => console.error(error));
+    }
+
+    return activity;
 }

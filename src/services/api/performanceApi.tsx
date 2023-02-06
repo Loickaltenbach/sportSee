@@ -21,15 +21,24 @@ interface Performance {
     }
 }
 
-export const GetUserPerformanceById = (userId: number) => {
+export const UserPerformanceById = (userId: number) => {
     const [performance, setPerformance] = React.useState<Performance>();
-    const url = `http://localhost:3000/user/${userId}/performance`
 
-    axios.get(`${url}${userId}`)
-        .then((response) => {
-            const data = response.data;
-            setPerformance(data);
-        })
-        .catch(error => console.error(error));
-        return performance?.data;
+    React.useEffect(() => {
+        GetUserPerformanceById(userId);
+    }, [])
+
+    const GetUserPerformanceById = (userId: number) => {
+        const url = `http://localhost:3000/user/${userId}/performance`
+    
+        axios.get(`${url}`)
+            .then((response) => {
+                const data = response.data;
+                setPerformance(data);
+                console.log('Performance', data);
+            })
+            .catch(error => console.error(error));
+    }
+
+    return performance;
 }

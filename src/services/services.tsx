@@ -1,13 +1,13 @@
-import { GetUserActivityById } from "./api/activityApi";
-import { GetUserPerformanceById } from "./api/performanceApi";
-import { GetUserSessionById } from "./api/sessionApi";
-import { GetUserDataById } from "./api/userApi";
+import { UserActivityById } from "./api/activityApi";
+import { UserPerformanceById } from "./api/performanceApi";
+import { UserSessionById } from "./api/sessionApi";
+import { UserDataById } from "./api/userApi";
 
 const getInstance = {
-    GetUserDataById,
-    GetUserActivityById,
-    GetUserSessionById,
-    GetUserPerformanceById,
+    UserDataById,
+    UserActivityById,
+    UserSessionById,
+    UserPerformanceById,
 
 }
 

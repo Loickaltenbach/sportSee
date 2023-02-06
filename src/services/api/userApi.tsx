@@ -19,16 +19,24 @@ interface User {
     }
 }
 
-export const GetUserDataById = (userId: number) => {
+export const UserDataById = (userId: number) => {
     const [user, setUser] = React.useState<User>();
-    const url = "http://localhost:3000/user/"
 
-    axios.get(`${url}${userId}`)
-        .then((response) => {
-            const data = response.data;
-            setUser(data);
-            return user;
-        })
-        .catch(error => console.error(error));
-        return user;
+    React.useEffect(() => {
+        GetUserDataById(userId);
+    }, [])
+
+    const GetUserDataById = (userId: number) => {
+        const url = "http://localhost:3000/user/"
+    
+        axios.get(`${url}${userId}`)
+            .then((response) => {
+                const data = response.data;
+                setUser(data);
+                console.log('User', data);
+            })
+            .catch(error => console.error(error));
+    }
+
+    return user;
 }

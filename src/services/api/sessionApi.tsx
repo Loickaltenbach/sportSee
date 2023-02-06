@@ -13,15 +13,25 @@ interface AverageSession {
     }
 }
 
-export const GetUserSessionById = (userId: number) => {
-    const [session, setSession] = React.useState<AverageSession>();
-    const url = `http://localhost:3000/user/${userId}/average-sessions`
+export const UserSessionById = (userId: number) => {
+    const [sessions, setSessions] = React.useState<AverageSession>();
 
-    axios.get(`${url}${userId}`)
-        .then((response) => {
-            const data = response.data;
-            setSession(data);
-        })
-        .catch(error => console.error(error));
-        return session?.data;
+    React.useEffect(() => {
+        GetUserSessionById(userId);
+    }, [])
+
+
+    const GetUserSessionById = (userId: number) => {
+        const url = `http://localhost:3000/user/${userId}/average-sessions`
+    
+        axios.get(`${url}`)
+            .then((response) => {
+                const data = response.data;
+                setSessions(data);
+                console.log('Sessions', data);
+            })
+            .catch(error => console.error(error));
+    }
+
+    return sessions;
 }
