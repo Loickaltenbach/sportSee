@@ -9,6 +9,8 @@ import { Chart } from '../components/chart';
 
 const HomeScreen = () => {
     const user = getInstance.UserDataById(18);
+    const firstName = user?.data.userInfos.firstName;
+    const score = user?.data.score;
     const activity = getInstance.UserActivityById(18)?.data?.sessions;
     const performance = getInstance.UserPerformanceById(18)?.data?.data;
     const session = getInstance.UserSessionById(18)?.data.sessions;
@@ -21,7 +23,7 @@ const HomeScreen = () => {
                     <div key={user?.data.id}>
                         <div style={{display: 'flex', lineHeight: '75%'}}>
                             <h1 style={{fontSize: 30}}>Bonjour </h1>
-                            <h1 style={{color: 'red', fontSize: 30, marginLeft: 10}}>{user?.data.userInfos.firstName}</h1>
+                            <h1 style={{color: 'red', fontSize: 30, marginLeft: 10}}>{firstName}</h1>
                         </div>
                         <div style={{display: 'flex'}}>
                             <p style={{fontSize: 14}}>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
@@ -32,7 +34,7 @@ const HomeScreen = () => {
                                 <div style={{display: 'flex', justifyContent: 'space-between', marginTop: 20}}>
                                     <Chart type="line" data={session} />
                                     <Chart type='radar' data={performance} />
-                                    <Chart type='doughnut' data={user?.data.score} />   
+                                    <Chart type='doughnut' data={score} />   
                                 </div>
                             </div>
                             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start'}}>

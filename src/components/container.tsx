@@ -21,7 +21,7 @@ export const Container = (props: ContainerProps) => {
     return (
         <div style={{display: 'flex', flexDirection: 'column', width: width, height: height}}>
             <div style={{display: 'flex', justifyContent: 'space-between', backgroundColor: 'black', width: width - 40, height: 50, padding: 20, boxShadow: "1px 5px 5px #9E9E9E"}}>
-                <img src={logo} alt={'logo'} width={100} />
+                <img src={logo} alt={'logo'} width={110} height={40} />
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width: width}}>
                     {props.routes?.map((route) => {
                         return(
