@@ -34,6 +34,18 @@ export const Chart = (props: ChartProps) => {
     const margin = {top: 10, right: 30, bottom: 20, left: 50};
     const width = 460 - margin.left - margin.right;
 
+
+    const x = 0;
+    const y = 5;
+    const styles = { 
+        transform: `translate(${x}px, ${y}px)`,
+        fontSize: 12,
+    };
+    const styles2 = { 
+        transform: `translate(${x}px, ${y + 12}px)`,
+        fontSize: 12,
+    };
+
     const drawChart = () => {
         if(props.type === 'bar') {
             return (
@@ -141,51 +153,27 @@ export const Chart = (props: ChartProps) => {
             )
         } else {
             const circleSize = 150;
+            console.log(props.data)
             return (
-                <div style={{backgroundColor: "#FBFBFB", width: circleSize, height: circleSize, borderRadius: 15}}>
-                    <Recharts.RadialBarChart
+                <div style={{backgroundColor: "#FBFBFB", width: '100%', height: '100%', borderRadius: 15}}>
+                    <Recharts.PieChart
                         width={circleSize}
                         height={circleSize}
-                        innerRadius={12}
-                        outerRadius={18}
-                        barSize={2}
-                        data={props.data}
-                        startAngle={90}
-                        endAngle={-270}
                     >
-                        <Recharts.RadialBar
-                            dataKey="score"
-                            cornerRadius={circleSize / 2}
-                            fill="red"
-                        />
-                        <text
-                            x={circleSize / 2}
-                            y={circleSize / 2.4}
-                            textAnchor="middle"
-                            dominantBaseline="middle"
-                            fontWeight='bold'
+                        <Recharts.Pie 
+                            fill='white' 
+                            dataKey={'value'} 
+                            data={props.data}
+                            innerRadius="68%"
+                            startAngle={180}
+                            endAngle={-360}
+                            cornerRadius={50}
                         >
-                            {(props.data * 100) + '%'}
-                        </text>
-                        <text
-                            x={circleSize / 2}
-                            y={circleSize / 1.85}
-                            textAnchor="middle"
-                            dominantBaseline="middle"
-                            color='grey'
-                        >
-                            de votre
-                        </text>
-                        <text
-                            x={circleSize / 2}
-                            y={circleSize / 1.55}
-                            textAnchor="middle"
-                            dominantBaseline="middle"
-                            color='grey'
-                        >
-                            objectif
-                        </text>
-                    </Recharts.RadialBarChart>
+                            <Recharts.Label style={{fontSize: 14, textAlign: 'center', fontWeight: 'bold'}} value={`${JSON.stringify(props.data[0].value * 100)}%`} position={'centerBottom'} />
+                            <Recharts.Label style={styles} value={`de votre`} position={'centerTop'} />
+                            <Recharts.Label style={styles2} value={`objectif`} position={'centerTop'} />
+                        </Recharts.Pie>
+                    </Recharts.PieChart>
                 </div>
             )
         }
