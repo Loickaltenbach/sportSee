@@ -5,7 +5,7 @@ import chicken from '../assets/chicken.png'
 import apple from '../assets/apple.png'
 import cheeseburger from '../assets/cheeseburger.png'
 import { InfoDiv } from '../components/infoDiv';
-import { Chart } from '../components/chart';
+import { BarChart, LineChart, RadarChart, PieChart } from '../components/charts';
 
 const HomeScreen = () => {
     const user = getInstance.UserDataById(18);
@@ -35,11 +35,11 @@ const HomeScreen = () => {
                         </div>
                         <div style={{display: 'flex'}}>
                             <div style={{marginRight: 20, width: 500}}>
-                                <Chart data={activity} type="bar" />
+                                <BarChart data={activity} />
                                 <div style={{display: 'flex', justifyContent: 'space-between', marginTop: 20}}>
-                                    <Chart type="line" data={session} />
-                                    <Chart type='radar' data={performance} />
-                                    <Chart type='doughnut' data={score} />   
+                                    <LineChart data={session} />
+                                    <RadarChart data={performance} />
+                                    <PieChart data={score} />   
                                 </div>
                             </div>
                             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start'}}>
