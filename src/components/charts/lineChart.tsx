@@ -16,9 +16,9 @@ const CustomLineToolTip = ({active, payload}: any) => {
 const LineChart = (props: ChartProps) => {
     const weekdays = ["L","M","M","J","V","S","D"];
             return (
-                <div style={{backgroundColor: "red", borderRadius: 15, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center'}}>
-                    <p style={{fontSize: 12, color: 'white', opacity: 0.6, textAlign: 'left', marginLeft: 15, width: 100}}>Duree moyenne des sessions</p>
-                    <Recharts.LineChart width={150} height={100} data={props.data}>
+                <div style={{backgroundColor: "red", borderRadius: 5, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                    <p style={{fontSize: 12, color: 'white', opacity: 0.6, textAlign: 'left'}}>Duree moyenne des sessions</p>
+                    <Recharts.LineChart width={260} height={220} data={props.data}>
                         <Recharts.XAxis 
                             dataKey={"day"}
                             tickSize={1}
@@ -27,7 +27,7 @@ const LineChart = (props: ChartProps) => {
                             tickFormatter={(day) => weekdays[day - 1]}
                             style={{fontSize: 14, color: 'white'}}
                         />
-                        <Recharts.YAxis dataKey={'sessionLength'} unit={'min'} hide />
+                        <Recharts.YAxis dataKey={'sessionLength'} unit={'min'} hide domain={['dataMin - 5', 'dataMax + 5']} />
                         <Recharts.Tooltip content={<CustomLineToolTip />} />
                         <Recharts.Line 
                             type="monotone" 
