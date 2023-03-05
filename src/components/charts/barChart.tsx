@@ -50,9 +50,8 @@ const BarChart = (props: ChartProps) => {
                     content={<CustomBarToolTip />}
                 />
                 <Recharts.YAxis 
-                    dataKey={"kilogram"}
+                    dataKey={"calories"}
                     orientation={'right'} 
-                    domain={['dataMin - 1', 'dataMax + 1']} 
                     allowDataOverflow={true}
                     allowDecimals={false}
                 />
