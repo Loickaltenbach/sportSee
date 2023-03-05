@@ -15,11 +15,9 @@ const CustomBarToolTip = ({active, payload}: any) => {
 }
 
 const BarChart = (props: ChartProps) => {
-    const margin = {top: 10, right: 30, bottom: 20, left: 50};
-    const width = 460 - margin.left - margin.right;
 
     return (
-        <div style={{backgroundColor: '#FBFBFB', borderRadius: 15, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'end'}}>
+        <div style={{backgroundColor: '#FBFBFB', borderRadius: 5, display: 'flex', flexDirection: 'column', alignItems: 'end'}}>
             <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
                 <p style={{fontSize: 12, marginLeft: 25, fontWeight: 'bold'}}>Activite quotidienne</p>
                 <div style={{display: 'flex', justifyContent: 'space-between', width: 200, marginRight: 25}}>
@@ -29,7 +27,7 @@ const BarChart = (props: ChartProps) => {
             </div>
             <Recharts.BarChart
                 title='Activite quotidienne'
-                width={width * 1.3}
+                width={800}
                 height={220}
                 data={props.data}
                 margin={{
@@ -52,9 +50,8 @@ const BarChart = (props: ChartProps) => {
                     content={<CustomBarToolTip />}
                 />
                 <Recharts.YAxis 
-                    dataKey={"kilogram"}
+                    dataKey={"calories"}
                     orientation={'right'} 
-                    domain={['dataMin - 1', 'dataMax + 1']} 
                     allowDataOverflow={true}
                     allowDecimals={false}
                 />

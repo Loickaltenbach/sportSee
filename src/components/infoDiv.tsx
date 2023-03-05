@@ -13,8 +13,8 @@ export const InfoDiv = (props: InfoDivProps) => {
     }
 
     return (
-        <div style={{display: 'flex', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10, alignItems: 'center', backgroundColor: '#FBFBFB', borderRadius: 10, width: 150, height: 80}}>
-            <div style={{height: 60, cursor: 'pointer', width: 60, borderRadius: 10, backgroundColor: props.backgroundColor}}>
+        <div style={{display: 'flex', justifyContent: 'space-evenly', paddingLeft: 10, paddingRight: 10, alignItems: 'center', backgroundColor: '#FBFBFB', borderRadius: 5, minWidth: 200, maxWidth: 250, minHeight: 100, maxHeight: 120}}>
+            <div style={{height: 60, cursor: 'pointer', width: 60, borderRadius: 6, backgroundColor: props.backgroundColor}}>
                 <img alt={props.icon} src={props.icon} height={20} width={20} style={{paddingTop: 20}} />
             </div>
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: 60}}>
